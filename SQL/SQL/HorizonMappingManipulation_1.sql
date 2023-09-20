@@ -1,9 +1,54 @@
-use AB_BI_TEST
+use AccountingDataMart_TEST
 go
 
 /******************************************************************/
 
 
+/****** Object:  Table [gl].[Stage_HorizonMapping]    Script Date: 2023-09-20 15:55:37 ****
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[gl].[Stage_HorizonMapping]') AND type in (N'U'))
+DROP TABLE [gl].[Stage_HorizonMapping]
+GO
+**/
+/****** Object:  Table [gl].[Stage_HorizonMapping]    Script Date: 2023-09-20 15:55:37 ***
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE gl.[Stage_HorizonMapping](
+	[ID] [nvarchar](max) NOT NULL,
+	[CC no.] [nvarchar](max) NOT NULL,
+	[Well name] [nvarchar](max) NOT NULL,
+	[API no.] [nvarchar](max) NOT NULL,
+	[Operator name] [nvarchar](max) NOT NULL,
+	[County] [nvarchar](max) NOT NULL,
+	[Producing formation] [nvarchar](max) NOT NULL,
+	[Producing formation 2] [nvarchar](max) NOT NULL,
+	[Producing formation 3] [nvarchar](max) NOT NULL,
+	[Producing formation 4] [nvarchar](max) NOT NULL,
+	[Producing formation 5] [nvarchar](max) NOT NULL,
+	[Notes] [nvarchar](max) NOT NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+
+truncate table gl.Stage_HorizonMapping;
+insert into gl.Stage_HorizonMapping
+(
+    ID
+  , [CC no.]
+  , [Well name]
+  , [API no.]
+  , [Operator name]
+  , County
+  , [Producing formation]
+  , [Producing formation 2]
+  , [Producing formation 3]
+  , [Producing formation 4]
+  , [Producing formation 5]
+  , Notes
+)
 select	  ID
 		, [CC no.]
 		, [Well name]
@@ -16,15 +61,15 @@ select	  ID
 		, [Producing formation 4]
 		, [Producing formation 5]
 		, Notes
-from fin_dev.Stage_HorizonMapping
+from AB_BI_TEST.gl.Stage_HorizonMapping
 
 --delete 
---from fin_dev.Stage_HorizonMapping
+--from gl.Stage_HorizonMapping
 --where ID = '284 records listed'
 
 --' =90246'
-
-/*****************************[HorizonID]*************************************/
+***/
+/*****************************[Get field lengths]***********************************
 select top 1
 			  max(datalength(replace([ID], ' =', ''))/2) as ID_len
 			, max(datalength([CC no.])/2) as CCNo_len
@@ -35,7 +80,7 @@ select top 1
 			, max(datalength([Producing formation])/2) as ProducingFormationBolo_len
 			, max(datalength([Producing formation 5])/2) as ProducingFormationKTG_len
 			, max(datalength([Notes])/2) as Notes_len
-	from fin_dev.Stage_HorizonMapping
+	from gl.Stage_HorizonMapping
 union all
 select top 1
 			  max(datalength(replace([ID], ' =', ''))) as ID_len
@@ -47,10 +92,14 @@ select top 1
 			, max(datalength([Producing formation])) as ProducingFormationBolo_len
 			, max(datalength([Producing formation 5])) as ProducingFormationKTG_len
 			, max(datalength([Notes])) as Notes_len
-	from fin_dev.Stage_HorizonMapping
+	from gl.Stage_HorizonMapping
+**/
 
-exec dbo.DropTable 'fin_dev', 'HorizonMappingDim';
-create table fin_dev.HorizonMappingDim (
+begin transaction HorizonTable
+
+exec dbo.DropTable 'gl', 'HorizonMappingDim';
+go
+create table gl.HorizonMappingDim (
 	id int identity(1,1) not null primary key,
 	BoloID nvarchar(16) null,
 	BoloLeaseID nvarchar(64) null,
@@ -62,8 +111,9 @@ create table fin_dev.HorizonMappingDim (
 	ProducingFormationKTG nvarchar(64) null,
 	Notes nvarchar(max)
 )
+go
 
-insert into fin_dev.HorizonMappingDim
+insert into gl.HorizonMappingDim
 (
     BoloID
   , BoloLeaseID
@@ -84,82 +134,99 @@ select ID
      , [Producing formation]
      , [Producing formation 5]
      , Notes
-from fin_dev.Stage_HorizonMapping
+from gl.Stage_HorizonMapping
+go
 
-select * from fin_dev.HorizonMappingDim
 
 
-exec DropTable 'fin_dev', 'HorizonMapping_BoloIDList';
-create table fin_dev.HorizonMapping_BoloIDList (
+exec DropTable 'gl', 'HorizonMapping_BoloIDList';
+go
+create table gl.HorizonMapping_BoloIDList (
 	[key] int not null identity(1,1) primary key,
 	[value] nvarchar(16) null);
-insert into fin_dev.HorizonMapping_BoloIDList([value])
-select BoloID from fin_dev.HorizonMappingDim group by BoloID;
+go
+insert into gl.HorizonMapping_BoloIDList([value])
+select BoloID from gl.HorizonMappingDim group by BoloID;
+go
 
-exec DropTable 'fin_dev', 'HorizonMapping_BoloLeaseIDList';
-create table fin_dev.HorizonMapping_BoloLeaseIDList (
+exec DropTable 'gl', 'HorizonMapping_BoloLeaseIDList';
+go
+create table gl.HorizonMapping_BoloLeaseIDList (
 	[key] int not null identity(1,1) primary key,
 	[value] nvarchar(64) null);
-insert into fin_dev.HorizonMapping_BoloLeaseIDList([value])
-select BoloLeaseID from fin_dev.HorizonMappingDim group by BoloLeaseID;
+go
+insert into gl.HorizonMapping_BoloLeaseIDList([value])
+select BoloLeaseID from gl.HorizonMappingDim group by BoloLeaseID;
+go
 
-exec DropTable 'fin_dev', 'HorizonMapping_WellNameList';
-create table fin_dev.HorizonMapping_WellNameList (
+exec DropTable 'gl', 'HorizonMapping_WellNameList';
+go
+create table gl.HorizonMapping_WellNameList (
 	[key] int not null identity(1,1) primary key,
 	[value] nvarchar(128) null);
-insert into fin_dev.HorizonMapping_WellNameList([value])
-select WellName from fin_dev.HorizonMappingDim group by WellName;
+go
+insert into gl.HorizonMapping_WellNameList([value])
+select WellName from gl.HorizonMappingDim group by WellName;
+go
 
-exec DropTable 'fin_dev', 'HorizonMapping_APIList';
-create table fin_dev.HorizonMapping_APIList (
+exec DropTable 'gl', 'HorizonMapping_APIList';
+go
+create table gl.HorizonMapping_APIList (
 	[key] int not null identity(1,1) primary key,
 	[value] nvarchar(32) null);
-insert into fin_dev.HorizonMapping_APIList([value])
-select API from fin_dev.HorizonMappingDim group by API;
+go
+insert into gl.HorizonMapping_APIList([value])
+select API from gl.HorizonMappingDim group by API;
+go
 
-exec DropTable 'fin_dev', 'HorizonMapping_OperatorNameList';
-create table fin_dev.HorizonMapping_OperatorNameList (
+exec DropTable 'gl', 'HorizonMapping_OperatorNameList';
+go
+create table gl.HorizonMapping_OperatorNameList (
 	[key] int not null identity(1,1) primary key,
 	[value] nvarchar(128) null);
-insert into fin_dev.HorizonMapping_OperatorNameList([value])
-select OperatorName from fin_dev.HorizonMappingDim group by OperatorName;
+go
+insert into gl.HorizonMapping_OperatorNameList([value])
+select OperatorName from gl.HorizonMappingDim group by OperatorName;
+go
 
-exec DropTable 'fin_dev', 'HorizonMapping_CountyList';
-create table fin_dev.HorizonMapping_CountyList (
+exec DropTable 'gl', 'HorizonMapping_CountyList';
+go
+create table gl.HorizonMapping_CountyList (
 	[key] int not null identity(1,1) primary key,
 	[value] nvarchar(32) null);
-insert into fin_dev.HorizonMapping_CountyList([value])
-select County from fin_dev.HorizonMappingDim group by County;
+go
+insert into gl.HorizonMapping_CountyList([value])
+select County from gl.HorizonMappingDim group by County;
+go
 
-exec DropTable 'fin_dev', 'HorizonMapping_BoloFormationList';
-create table fin_dev.HorizonMapping_BoloFormationList (
+exec DropTable 'gl', 'HorizonMapping_BoloFormationList';
+go
+create table gl.HorizonMapping_BoloFormationList (
 	[key] int not null identity(1,1) primary key,
 	[value] nvarchar(64) null);
-insert into fin_dev.HorizonMapping_BoloFormationList([value])
-select ProducingFormationBolo from fin_dev.HorizonMappingDim group by ProducingFormationBolo;
+go
+insert into gl.HorizonMapping_BoloFormationList([value])
+select ProducingFormationBolo from gl.HorizonMappingDim group by ProducingFormationBolo;
+go
 
 
-exec DropTable 'fin_dev', 'HorizonMapping_KTGFormationList';
-create table fin_dev.HorizonMapping_KTGFormationList (
+exec DropTable 'gl', 'HorizonMapping_KTGFormationList';
+go
+create table gl.HorizonMapping_KTGFormationList (
 	[key] int not null identity(1,1) primary key,
 	[value] nvarchar(64) null);
-insert into fin_dev.HorizonMapping_KTGFormationList([value])
-select ProducingFormationKTG from fin_dev.HorizonMappingDim group by ProducingFormationKTG;
+go
+insert into gl.HorizonMapping_KTGFormationList([value])
+select ProducingFormationKTG from gl.HorizonMappingDim group by ProducingFormationKTG;
+go
 
 
 
-select * from fin_dev.HorizonMapping_BoloIDList;
-select * from fin_dev.HorizonMapping_BoloLeaseIDList;
-select * from fin_dev.HorizonMapping_WellNameList;
-select * from fin_dev.HorizonMapping_APIList;
-select * from fin_dev.HorizonMapping_OperatorNameList;
-select * from fin_dev.HorizonMapping_CountyList;
-select * from fin_dev.HorizonMapping_BoloFormationList;
-select * from fin_dev.HorizonMapping_KTGFormationList;
 
 
-exec dbo.DropTable 'fin_dev', 'HorizonMapping';
-create table fin_dev.HorizonMapping (
+exec dbo.DropTable 'gl', 'HorizonMapping';
+go
+create table gl.HorizonMapping (
 	id int identity(1,1) not null primary key,
 	BoloID int not null,
 	BoloLeaseID int not null,
@@ -171,58 +238,66 @@ create table fin_dev.HorizonMapping (
 	ProducingFormationKTG int not null,
 	Notes nvarchar(max)
 )
+go
 
-insert into fin_dev.HorizonMapping(BoloID, BoloLeaseID, WellName, API, OperatorName, County, ProducingFormationBolo, ProducingFormationKTG, Notes)
-select	(select [key] from fin_dev.HorizonMapping_BoloIDList where [value] = BoloID) as BoloID
-      , (select [key] from fin_dev.HorizonMapping_BoloLeaseIDList where [value] = BoloLeaseID) as BoloLeaseID
-      , (select [key] from fin_dev.HorizonMapping_WellNameList where [value] = WellName) as WellName
-      , (select [key] from fin_dev.HorizonMapping_APIList where [value] = API) as API
-      , (select [key] from fin_dev.HorizonMapping_OperatorNameList where [value] = OperatorName) as OperatorName
-      , (select [key] from fin_dev.HorizonMapping_CountyList where [value] = County) as County
-      , (select [key] from fin_dev.HorizonMapping_BoloFormationList where [value] = ProducingFormationBolo) as ProducingFormationBolo
-      , (select [key] from fin_dev.HorizonMapping_KTGFormationList where [value] = ProducingFormationKTG) as ProducingFormationKTG
+insert into gl.HorizonMapping(BoloID, BoloLeaseID, WellName, API, OperatorName, County, ProducingFormationBolo, ProducingFormationKTG, Notes)
+select	(select [key] from gl.HorizonMapping_BoloIDList where [value] = BoloID) as BoloID
+      , (select [key] from gl.HorizonMapping_BoloLeaseIDList where [value] = BoloLeaseID) as BoloLeaseID
+      , (select [key] from gl.HorizonMapping_WellNameList where [value] = WellName) as WellName
+      , (select [key] from gl.HorizonMapping_APIList where [value] = API) as API
+      , (select [key] from gl.HorizonMapping_OperatorNameList where [value] = OperatorName) as OperatorName
+      , (select [key] from gl.HorizonMapping_CountyList where [value] = County) as County
+      , (select [key] from gl.HorizonMapping_BoloFormationList where [value] = ProducingFormationBolo) as ProducingFormationBolo
+      , (select [key] from gl.HorizonMapping_KTGFormationList where [value] = ProducingFormationKTG) as ProducingFormationKTG
       , Notes
-from fin_dev.HorizonMappingDim
-
-select * from fin_dev.HorizonMapping;
-
-
-alter table fin_dev.HorizonMapping add constraint fk_HorizonMapping_BoloID
-	foreign key(BoloID) references fin_dev.HorizonMapping_BoloIDList([key])
-	on delete cascade on update cascade;
-
-alter table fin_dev.HorizonMapping add constraint fk_HorizonMapping_BoloLeaseID
-	foreign key(BoloLeaseID) references fin_dev.HorizonMapping_BoloLeaseIDList([key])
-	on delete cascade on update cascade;
-
-alter table fin_dev.HorizonMapping add constraint fk_HorizonMapping_WellName
-	foreign key(WellName) references fin_dev.HorizonMapping_WellNameList([key])
-	on delete cascade on update cascade;
-
-alter table fin_dev.HorizonMapping add constraint fk_HorizonMapping_API
-	foreign key(API) references fin_dev.HorizonMapping_APIList([key])
-	on delete cascade on update cascade;
-
-alter table fin_dev.HorizonMapping add constraint fk_HorizonMapping_OperatorName
-	foreign key(OperatorName) references fin_dev.HorizonMapping_OperatorNameList([key])
-	on delete cascade on update cascade;
-
-alter table fin_dev.HorizonMapping add constraint fk_HorizonMapping_County
-	foreign key(County) references fin_dev.HorizonMapping_CountyList([key])
-	on delete cascade on update cascade;
-
-alter table fin_dev.HorizonMapping add constraint fk_HorizonMapping_ProducingFormationBolo
-	foreign key(ProducingFormationBolo) references fin_dev.HorizonMapping_BoloFormationList([key])
-	on delete cascade on update cascade;
-
-alter table fin_dev.HorizonMapping add constraint fk_HorizonMapping_ProducingFormationKTG
-	foreign key(ProducingFormationKTG) references fin_dev.HorizonMapping_KTGFormationList([key])
-	on delete cascade on update cascade;
-
+from gl.HorizonMappingDim
 go
 
 
---create view fin_dev.HorizonMapping_vw as
+
+
+alter table gl.HorizonMapping add constraint fk_HorizonMapping_BoloID
+	foreign key(BoloID) references gl.HorizonMapping_BoloIDList([key])
+	on delete cascade on update cascade;
+go
+
+alter table gl.HorizonMapping add constraint fk_HorizonMapping_BoloLeaseID
+	foreign key(BoloLeaseID) references gl.HorizonMapping_BoloLeaseIDList([key])
+	on delete cascade on update cascade;
+go
+
+alter table gl.HorizonMapping add constraint fk_HorizonMapping_WellName
+	foreign key(WellName) references gl.HorizonMapping_WellNameList([key])
+	on delete cascade on update cascade;
+go
+
+alter table gl.HorizonMapping add constraint fk_HorizonMapping_API
+	foreign key(API) references gl.HorizonMapping_APIList([key])
+	on delete cascade on update cascade;
+go
+
+alter table gl.HorizonMapping add constraint fk_HorizonMapping_OperatorName
+	foreign key(OperatorName) references gl.HorizonMapping_OperatorNameList([key])
+	on delete cascade on update cascade;
+go
+
+alter table gl.HorizonMapping add constraint fk_HorizonMapping_County
+	foreign key(County) references gl.HorizonMapping_CountyList([key])
+	on delete cascade on update cascade;
+go
+
+alter table gl.HorizonMapping add constraint fk_HorizonMapping_ProducingFormationBolo
+	foreign key(ProducingFormationBolo) references gl.HorizonMapping_BoloFormationList([key])
+	on delete cascade on update cascade;
+go
+
+alter table gl.HorizonMapping add constraint fk_HorizonMapping_ProducingFormationKTG
+	foreign key(ProducingFormationKTG) references gl.HorizonMapping_KTGFormationList([key])
+	on delete cascade on update cascade;
+go
+
+
+create view gl.HorizonMapping_vw as
 select	h.id
       , bi.value as BoloID
       , bli.value as BoloLeaseID
@@ -233,23 +308,37 @@ select	h.id
       , bf.value as ProducingFormationBolo
       , kf.value as ProducingFormationKTG
       , h.Notes
-from fin_dev.HorizonMapping h
-	left join fin_dev.HorizonMapping_BoloIDList bi
+from gl.HorizonMapping h
+	left join gl.HorizonMapping_BoloIDList bi
 		on h.BoloID = bi.[key]
-	left join fin_dev.HorizonMapping_BoloLeaseIDList bli
+	left join gl.HorizonMapping_BoloLeaseIDList bli
 		on h.BoloLeaseID = bli.[key]
-	left join fin_dev.HorizonMapping_WellNameList wn
+	left join gl.HorizonMapping_WellNameList wn
 		on h.WellName = wn.[key]
-	left join fin_dev.HorizonMapping_APIList a
+	left join gl.HorizonMapping_APIList a
 		on h.API = a.[key]
-	left join fin_dev.HorizonMapping_OperatorNameList op
+	left join gl.HorizonMapping_OperatorNameList op
 		on h.OperatorName = op.[key]
-	left join fin_dev.HorizonMapping_CountyList c
+	left join gl.HorizonMapping_CountyList c
 		on h.County = c.[key]
-	left join fin_dev.HorizonMapping_BoloFormationList bf
+	left join gl.HorizonMapping_BoloFormationList bf
 		on h.ProducingFormationBolo = bf.[key]
-	left join fin_dev.HorizonMapping_KTGFormationList kf
+	left join gl.HorizonMapping_KTGFormationList kf
 		on h.ProducingFormationKTG = kf.[key];
+go
 
 
-select * from fin_dev.HorizonMapping_vw;
+commit transaction HorizonTable;
+
+
+select * from gl.HorizonMappingDim
+select * from gl.HorizonMapping_BoloIDList;
+select * from gl.HorizonMapping_BoloLeaseIDList;
+select * from gl.HorizonMapping_WellNameList;
+select * from gl.HorizonMapping_APIList;
+select * from gl.HorizonMapping_OperatorNameList;
+select * from gl.HorizonMapping_CountyList;
+select * from gl.HorizonMapping_BoloFormationList;
+select * from gl.HorizonMapping_KTGFormationList;
+select * from gl.HorizonMapping;
+select * from gl.HorizonMapping_vw;
