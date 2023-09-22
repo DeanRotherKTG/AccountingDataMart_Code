@@ -1,0 +1,1351 @@
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <WORKSPACE
+#    Command-line to run this workspace:
+#        "C:\Program Files\FME\2021.0.2\fme.exe" "C:\Users\drother\OneDrive - Laredo Energy\Documents\GitHub_LE-L-9GRTT00\deanrotherKTG\AccountingDataMart_Code\FME\ImportGLDetail.fmw"
+#              --SourceDataset_CSV2 "C:\Users\drother\OneDrive - Laredo Energy\Documents\OSaenz\2023_07_31  GL Data Detail.csv"
+#              --DestDataset_MSSQL_ADO "srv84.AccountingDataMart_TEST"
+#    
+#!   ARCGIS_COMPATIBILITY="ARCGIS_AUTO"
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BEGIN_PYTHON=""
+#!   BEGIN_TCL=""
+#!   CATEGORY=""
+#!   DESCRIPTION=""
+#!   DESTINATION="NONE"
+#!   DESTINATION_ROUTING_FILE=""
+#!   DOC_EXTENTS="3107.5 74.125"
+#!   DOC_TOP_LEFT="-1439.39 109.629"
+#!   END_PYTHON=""
+#!   END_TCL=""
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="21321"
+#!   FME_DOCUMENT_GUID="092b64a6-0d0e-42a4-8f9c-22800af02933"
+#!   FME_DOCUMENT_PRIORGUID="acfc6d86-ada5-4fe1-95bb-2b55e1db42f8"
+#!   FME_GEOMETRY_HANDLING="Enhanced"
+#!   FME_IMPLICIT_CSMAP_REPROJECTION_MODE="Auto"
+#!   FME_NAMES_ENCODING="windows-1252"
+#!   FME_REPROJECTION_ENGINE="FME"
+#!   FME_SERVER_SERVICES=""
+#!   FME_STROKE_MAX_DEVIATION="0"
+#!   HISTORY=""
+#!   IGNORE_READER_FAILURE="No"
+#!   LAST_SAVE_BUILD="FME(R) 2021.0.2.0 (20210429 - Build 21321 - WIN64)"
+#!   LAST_SAVE_DATE="2023-09-21T08:30:28"
+#!   LOG_FILE=""
+#!   LOG_MAX_RECORDED_FEATURES="200"
+#!   MARKDOWN_DESCRIPTION=""
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOG_FEATURES="200"
+#!   MULTI_WRITER_DATASET_ORDER="BY_ID"
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="38"
+#!   REDIRECT_TERMINATORS="NONE"
+#!   SAVE_ON_PROMPT_AND_RUN="Yes"
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   SOURCE="NONE"
+#!   SOURCE_ROUTING_FILE=""
+#!   TERMINATE_REJECTED="YES"
+#!   TITLE=""
+#!   USAGE=""
+#!   USE_MARKDOWN=""
+#!   VIEW_POSITION="-1637.52 396.879"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   ZOOM_SCALE="100"
+#! >
+#! <DATASETS>
+#! <DATASET
+#!   IS_SOURCE="true"
+#!   ROLE="READER"
+#!   FORMAT="CSV2"
+#!   DATASET="$(SourceDataset_CSV2)"
+#!   KEYWORD="CSV2_1"
+#!   MULTI_GEOM_ALLOWED="false"
+#!   ATTR_MAX_LENGTH="0"
+#!   ATTR_CASE="ANY"
+#!   ALLOWED_FEAT_TYPES=""
+#!   WRITE_DEFS="true"
+#!   DEFLINE_TEMPLATE=""
+#!   DEFLINE_ATTRS="true"
+#!   EXPOSABLE_ATTRS="csv_line_number uint64 csv_number_of_fields uint32 csv_skipped_line string csv_total_number_of_columns uint32 csv_type string fme_basename string fme_color string fme_dataset string fme_feature_type string fme_fill_color string fme_geometry string fme_primary_axis string fme_rotation string fme_secondary_axis string fme_start_angle string fme_sweep_angle string fme_text_size string fme_text_string string fme_type string multi_reader_full_id string multi_reader_id string multi_reader_keyword string multi_reader_type string"
+#!   DEFLINE_PARMS=""
+#!   ATTR_INDEX_TYPES=""
+#!   ATTR_NAME_INVALID_CHARS=""
+#!   SUPPORTS_FEATURE_TYPE_FANOUT="true"
+#!   ENABLED="true"
+#!   DYNAMIC_FEATURE_TYPES_LIST_ON_MERGE="true"
+#!   DATASET_TYPE="FILEDIR"
+#!   FTTR_TYPE="LISTBOX_ENCODED"
+#!   GENERATE_FME_BUILD_NUM="21321"
+#!   COORDSYS=""
+#!   FEATURE_TYPES=""
+#!   MAX_FEATURES="10000"
+#!   MAX_FEATURES_PER_FEATURE_TYPE=""
+#!   MIN_FEATURES=""
+#!   START_FEATURE=""
+#! >
+#! <METAFILE_PARAMETER
+#!   NAME="ATTRIBUTE_READING"
+#!   VALUE="DEFLINE"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="DATASET_NAME"
+#!   VALUE="csv file"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="DEFAULT_ATTR_TYPE"
+#!   VALUE="string"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="FEATURE_TYPE_DEFAULT_NAME"
+#!   VALUE="File1"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="FEATURE_TYPE_NAME"
+#!   VALUE="CSV File"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="READER_DATASET_HINT"
+#!   VALUE="Select the CSV file(s)"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="WRITER_DATASET_HINT"
+#!   VALUE="Specify a folder for the CSV file"
+#! />
+#! </DATASET>
+#! <DATASET
+#!   IS_SOURCE="false"
+#!   ROLE="WRITER"
+#!   FORMAT="MSSQL_ADO"
+#!   DATASET="$(DestDataset_MSSQL_ADO)"
+#!   KEYWORD="MSSQL_ADO_1"
+#!   MULTI_GEOM_ALLOWED="true"
+#!   ATTR_MAX_LENGTH="128"
+#!   ATTR_CASE="ANY"
+#!   ALLOWED_FEAT_TYPES=""
+#!   WRITE_DEFS="true"
+#!   DEFLINE_TEMPLATE="mssql_update_key_columns &quot;&quot; mssql_drop_table &quot;&quot; mssql_truncate_table &quot;&quot; mssql_table_writer_mode &quot;&quot; fme_feature_operation INSERT fme_table_handling CREATE_IF_MISSING fme_selection_method MATCH_COLUMNS fme_match_columns &quot;&quot; fme_where_builder_clause &quot;&quot; mssql_enable_identity_insert NO"
+#!   DEFLINE_ATTRS="true"
+#!   EXPOSABLE_ATTRS="db_type char(254) fme_basename char(50) fme_color char(50) fme_dataset char(50) fme_db_operation char(16) fme_db_transaction char(16) fme_feature_type char(50) fme_fill_color char(50) fme_geometry char(50) fme_primary_axis float fme_rotation float fme_secondary_axis float fme_start_angle float fme_sweep_angle float fme_text_size float fme_text_string char(50) fme_type char(50)"
+#!   DEFLINE_PARMS="&quot;GUI OPTIONAL NAMEDGROUP fme_configuration_group fme_configuration_common_group%fme_spatial_group%fme_advanced_group%oracle_advanced_group Table&quot; &quot;&quot; &quot;GUI OPTIONAL NAMEDGROUP fme_configuration_common_group fme_feature_operation%fme_table_handling%mie_pack%oracle_model%fme_update_geometry%fme_selection_group%fme_table_creation_group General&quot; &quot;&quot; &quot;GUI ACTIVECHOICE_LOOKUP fme_feature_operation Insert,INSERT,fme_update_geometry,fme_selection_group,mie_pack%Update,UPDATE,++fme_table_handling+USE_EXISTING,++fme_selection_group+FME_DISCLOSURE_OPEN%Delete,DELETE,++fme_table_handling+USE_EXISTING,fme_update_geometry,++fme_selection_group+FME_DISCLOSURE_OPEN,fme_spatial_group,fme_advanced_group,oracle_sequenced_cols%&lt;at&gt;Value&lt;openparen&gt;fme_db_operation&lt;closeparen&gt;,MULTIPLE,++fme_table_handling+USE_EXISTING,++fme_selection_group+FME_DISCLOSURE_OPEN Feature Operation&quot; INSERT &quot;GUI ACTIVECHOICE_LOOKUP fme_table_handling Use&lt;space&gt;Existing,USE_EXISTING,fme_table_creation_group%Create&lt;space&gt;If&lt;space&gt;Needed,CREATE_IF_MISSING%Drop&lt;space&gt;and&lt;space&gt;Create,DROP_CREATE%Truncate&lt;space&gt;Existing,TRUNCATE_EXISTING,fme_table_creation_group Table Handling&quot; CREATE_IF_MISSING &quot;GUI OPTIONAL DISCLOSUREGROUP fme_selection_group fme_selection_method Row Selection&quot; &quot;&quot; &quot;GUI OPTIONAL WHOLE_LINE RADIOPARAMETERGROUP fme_selection_method fme_match_columns,MATCH_COLUMNS%fme_where_builder_clause,BUILDER Row Selection Method&quot; MATCH_COLUMNS &quot;GUI WHOLE_LINE ATTRLIST_COMMAS fme_match_columns \&quot; \&quot; Match Columns&quot; &quot;&quot; &quot;GUI WHOLE_LINE TEXT_EDIT_SQL_CFG_OR_ATTR fme_where_builder_clause MODE,WHERE WHERE Clause&quot; &quot;&quot; &quot;GUI OPTIONAL DISCLOSUREGROUP fme_advanced_group mssql_enable_identity_insert Advanced&quot; &quot;&quot; &quot;GUI CHOICE mssql_enable_identity_insert NO%YES Insert Into Identity Column&quot; NO "
+#!   ATTR_INDEX_TYPES="Indexed IndexedNotNull Unique UniqueClustered Clustered ClusteredNotNull NotNull PrimaryKey"
+#!   ATTR_NAME_INVALID_CHARS="\\[]&quot;"
+#!   SUPPORTS_FEATURE_TYPE_FANOUT="true"
+#!   ENABLED="true"
+#!   DYNAMIC_FEATURE_TYPES_LIST_ON_MERGE="true"
+#!   DATASET_TYPE="DATABASE"
+#!   FTTR_TYPE=""
+#!   GENERATE_FME_BUILD_NUM="21321"
+#!   COORDSYS=""
+#! >
+#! <METAFILE_PARAMETER
+#!   NAME="ADVANCED_PARMS"
+#!   VALUE="MSSQL_ADO_IN_APPLICATION_INTENT MSSQL_ADO_IN_READ_CACHE_SIZE MSSQL_ADO_IN_BEGIN_SQL{0} MSSQL_ADO_IN_END_SQL{0} MSSQL_ADO_OUT_BULK_INSERT MSSQL_ADO_OUT_TRANSACTION_INTERVAL MSSQL_ADO_OUT_BEGIN_SQL{0} MSSQL_ADO_OUT_END_SQL{0}"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="ATTRIBUTE_READING"
+#!   VALUE="DEFLINE_ATTRS"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="DATASET_NAME"
+#!   VALUE="Database"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="FEATURE_TYPE_DEFAULT_NAME"
+#!   VALUE="Table1"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="FEATURE_TYPE_NAME"
+#!   VALUE="Table"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="NETWORK_AUTHENTICATION"
+#!   VALUE="NO"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="NETWORK_PROXY"
+#!   VALUE="NO"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="PARAMS_TO_NOT_PROPAGATE_ON_INSPECT"
+#!   VALUE="BEGIN_SQL{0} END_SQL{0}"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="SUPPORTS_SCHEMA_IN_FEATURE_TYPE_NAME"
+#!   VALUE="YES"
+#! />
+#! </DATASET>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_buffer"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_binarybuffer"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_xml"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_json"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_varchar(width)"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_varbinary(width)"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_char(width)"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_binary(width)"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_datetime"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_time"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_date"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_real64"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="real64"
+#!   FME_TYPE="fme_real64"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="x_coordinate"
+#!   FME_TYPE="fme_real64"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="y_coordinate"
+#!   FME_TYPE="fme_real64"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="z_coordinate"
+#!   FME_TYPE="fme_real64"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_real32"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="real32"
+#!   FME_TYPE="fme_real32"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_int64"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="int64"
+#!   FME_TYPE="fme_int64"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_int32"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="int32"
+#!   FME_TYPE="fme_int32"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_int16"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="int16"
+#!   FME_TYPE="fme_int16"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_int8"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="int8"
+#!   FME_TYPE="fme_int8"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_uint64"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="uint64"
+#!   FME_TYPE="fme_uint64"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_uint32"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="uint32"
+#!   FME_TYPE="fme_uint32"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_uint16"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="uint16"
+#!   FME_TYPE="fme_uint16"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_uint8"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="uint8"
+#!   FME_TYPE="fme_uint8"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_boolean"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="boolean"
+#!   FME_TYPE="fme_boolean"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_decimal(width,decimal)"
+#!   FORMAT="CSV2"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="bit"
+#!   FME_TYPE="fme_boolean"
+#!   FORMAT="MSSQL_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="text"
+#!   FME_TYPE="fme_buffer"
+#!   FORMAT="MSSQL_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="xml"
+#!   FME_TYPE="fme_xml"
+#!   FORMAT="MSSQL_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="text"
+#!   FME_TYPE="fme_json"
+#!   FORMAT="MSSQL_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="image"
+#!   FME_TYPE="fme_binarybuffer"
+#!   FORMAT="MSSQL_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="ntext"
+#!   FME_TYPE="fme_buffer"
+#!   FORMAT="MSSQL_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="uniqueidentifier"
+#!   FME_TYPE="fme_buffer"
+#!   FORMAT="MSSQL_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="timestamp"
+#!   FME_TYPE="fme_binarybuffer"
+#!   FORMAT="MSSQL_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="tinyint"
+#!   FME_TYPE="fme_uint8"
+#!   FORMAT="MSSQL_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="smallint"
+#!   FME_TYPE="fme_int16"
+#!   FORMAT="MSSQL_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="smallint"
+#!   FME_TYPE="fme_int8"
+#!   FORMAT="MSSQL_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="integer"
+#!   FME_TYPE="fme_int32"
+#!   FORMAT="MSSQL_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="integer"
+#!   FME_TYPE="fme_uint16"
+#!   FORMAT="MSSQL_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="bigint"
+#!   FME_TYPE="fme_int64"
+#!   FORMAT="MSSQL_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="bigint"
+#!   FME_TYPE="fme_uint32"
+#!   FORMAT="MSSQL_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="identity"
+#!   FME_TYPE="fme_int32"
+#!   FORMAT="MSSQL_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="char(width)"
+#!   FME_TYPE="fme_char(width)"
+#!   FORMAT="MSSQL_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="binary(width)"
+#!   FME_TYPE="fme_binary(width)"
+#!   FORMAT="MSSQL_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="nchar(width)"
+#!   FME_TYPE="fme_char(width)"
+#!   FORMAT="MSSQL_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="datetime2"
+#!   FME_TYPE="fme_datetime"
+#!   FORMAT="MSSQL_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="datetime2(width)"
+#!   FME_TYPE="fme_datetime"
+#!   FORMAT="MSSQL_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="datetimeoffset(width)"
+#!   FME_TYPE="fme_datetime"
+#!   FORMAT="MSSQL_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="datetime"
+#!   FME_TYPE="fme_datetime"
+#!   FORMAT="MSSQL_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="smalldatetime"
+#!   FME_TYPE="fme_datetime"
+#!   FORMAT="MSSQL_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="time"
+#!   FME_TYPE="fme_time"
+#!   FORMAT="MSSQL_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="time(width)"
+#!   FME_TYPE="fme_time"
+#!   FORMAT="MSSQL_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="date"
+#!   FME_TYPE="fme_date"
+#!   FORMAT="MSSQL_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="numeric(width,decimal)"
+#!   FME_TYPE="fme_decimal(width,decimal)"
+#!   FORMAT="MSSQL_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="numeric(20,0)"
+#!   FME_TYPE="fme_uint64"
+#!   FORMAT="MSSQL_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="real"
+#!   FME_TYPE="fme_real32"
+#!   FORMAT="MSSQL_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="float"
+#!   FME_TYPE="fme_real64"
+#!   FORMAT="MSSQL_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="money"
+#!   FME_TYPE="fme_real64"
+#!   FORMAT="MSSQL_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="smallmoney"
+#!   FME_TYPE="fme_real64"
+#!   FORMAT="MSSQL_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="varchar(width)"
+#!   FME_TYPE="fme_varchar(width)"
+#!   FORMAT="MSSQL_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="nvarchar(width)"
+#!   FME_TYPE="fme_varchar(width)"
+#!   FORMAT="MSSQL_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="varbinary(width)"
+#!   FME_TYPE="fme_varbinary(width)"
+#!   FORMAT="MSSQL_ADO"
+#! />
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="csv_feature_table"
+#!   FME_TYPE="fme_feature_table"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="csv_none"
+#!   FME_TYPE="fme_no_geom"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="csv_point"
+#!   FME_TYPE="fme_point"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="csv_none"
+#!   FME_TYPE="fme_line"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="csv_none"
+#!   FME_TYPE="fme_area"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="csv_none"
+#!   FME_TYPE="fme_text"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="csv_none"
+#!   FME_TYPE="fme_ellipse"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="csv_none"
+#!   FME_TYPE="fme_arc"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="csv_none"
+#!   FME_TYPE="fme_rectangle"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="csv_none"
+#!   FME_TYPE="fme_rounded_rectangle"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="fme_no_map"
+#!   FME_TYPE="fme_no_geom"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="fme_no_map"
+#!   FME_TYPE="fme_no_map"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="csv_none"
+#!   FME_TYPE="fme_collection"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="csv_none"
+#!   FME_TYPE="fme_raster"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="csv_none"
+#!   FME_TYPE="fme_surface"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="csv_none"
+#!   FME_TYPE="fme_solid"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="csv_none"
+#!   FME_TYPE="fme_point_cloud"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="csv_none"
+#!   FME_TYPE="fme_voxel_grid"
+#!   FORMAT="CSV2"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_no_geom"
+#!   FORMAT="MSSQL_ADO"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_point"
+#!   FORMAT="MSSQL_ADO"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_line"
+#!   FORMAT="MSSQL_ADO"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_area"
+#!   FORMAT="MSSQL_ADO"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_text"
+#!   FORMAT="MSSQL_ADO"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_ellipse"
+#!   FORMAT="MSSQL_ADO"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_arc"
+#!   FORMAT="MSSQL_ADO"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_rectangle"
+#!   FORMAT="MSSQL_ADO"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_rounded_rectangle"
+#!   FORMAT="MSSQL_ADO"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_collection"
+#!   FORMAT="MSSQL_ADO"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_raster"
+#!   FORMAT="MSSQL_ADO"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_surface"
+#!   FORMAT="MSSQL_ADO"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_solid"
+#!   FORMAT="MSSQL_ADO"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_point_cloud"
+#!   FORMAT="MSSQL_ADO"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_voxel_grid"
+#!   FORMAT="MSSQL_ADO"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="false"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_feature_table"
+#!   FORMAT="MSSQL_ADO"
+#! />
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! <FEATURE_TYPE
+#!   IS_SOURCE="true"
+#!   NODE_NAME="CSV"
+#!   FEATURE_TYPE_NAME=""
+#!   FEATURE_TYPE_NAME_QUALIFIER=""
+#!   IS_EDITABLE="false"
+#!   IDENTIFIER="2"
+#!   FEAT_GEOMTYPE="csv_none"
+#!   POSITION="-1439.389593895939 183.75418754187541"
+#!   BOUNDING_RECT="-1439.389593895939 183.75418754187541 670.63190631906332 71"
+#!   ORDER="500000000000001"
+#!   COLLAPSED="false"
+#!   KEYWORD="CSV2_1"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   HIDDEN_USER_ATTRS="Budget&lt;space&gt;Mapping Sub-statement Check&lt;space&gt;for&lt;space&gt;Close Formation LOE&lt;space&gt;Mapping Fmt&lt;space&gt;Acct&lt;space&gt;Period Statement Sub&lt;space&gt;stmt&lt;space&gt;Order col35 Primary&lt;space&gt;Mapping Lease&lt;space&gt;Lookup"
+#!   READ_SELECT_ATTRS="true"
+#!   MERGE_FILTER="*"
+#!   MERGE_FILTER_TYPE="FILTER_TYPE_GLOB"
+#!   MERGE_FILTER_CASE_SENSITIVE="true"
+#!   DYNAMIC_SCHEMA="false"
+#! >
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Statement" ATTR_TYPE="string" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Check for Close" ATTR_TYPE="string" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="LOE Mapping" ATTR_TYPE="string" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Budget Mapping" ATTR_TYPE="string" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Sub-statement" ATTR_TYPE="string" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Sub stmt Order" ATTR_TYPE="uint8" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Primary Mapping" ATTR_TYPE="string" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Lease Lookup" ATTR_TYPE="string" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Formation" ATTR_TYPE="string" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Fmt Acct Period" ATTR_TYPE="string" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Trans no." ATTR_TYPE="uint32" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Dist co" ATTR_TYPE="uint8" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Account" ATTR_TYPE="string" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Account Name" ATTR_TYPE="string" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Description" ATTR_TYPE="string" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Voucher ref" ATTR_TYPE="string" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Vou src" ATTR_TYPE="string" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Cost center name" ATTR_TYPE="string" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Cost Center" ATTR_TYPE="string" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Project" ATTR_TYPE="string" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Field Name" ATTR_TYPE="string" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Name ID" ATTR_TYPE="uint16" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Name 1" ATTR_TYPE="string" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Acctg period" ATTR_TYPE="string" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Gen acct" ATTR_TYPE="uint16" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Gen Account Name" ATTR_TYPE="string" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="ACTIVITY.MM/YYYY" ATTR_TYPE="string" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Activity period" ATTR_TYPE="string" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Debit amt" ATTR_TYPE="string" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Credit amt" ATTR_TYPE="string" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Amount" ATTR_TYPE="string" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Oper" ATTR_TYPE="uint8" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Gross amount" ATTR_TYPE="real64" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Qty" ATTR_TYPE="real64" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Qty2" ATTR_TYPE="uint8" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="col35" ATTR_TYPE="real64" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#! </FEATURE_TYPE>
+#! <FEATURE_TYPE
+#!   IS_SOURCE="false"
+#!   NODE_NAME="Stage_GLDetailCopy"
+#!   FEATURE_TYPE_NAME=""
+#!   FEATURE_TYPE_NAME_QUALIFIER="dbo"
+#!   IS_EDITABLE="true"
+#!   IDENTIFIER="3"
+#!   FEAT_GEOMTYPE="All"
+#!   POSITION="1053.1045310453105 180.62915629156294"
+#!   BOUNDING_RECT="1053.1045310453105 180.62915629156294 615.00106825772946 71"
+#!   ORDER="500000000000002"
+#!   COLLAPSED="false"
+#!   KEYWORD="MSSQL_ADO_1"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   SCHEMA_ATTRIBUTE_SOURCE="1"
+#! >
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Trans no." ATTR_TYPE="ntext" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Dist co" ATTR_TYPE="ntext" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Account" ATTR_TYPE="ntext" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Account Name" ATTR_TYPE="ntext" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Description" ATTR_TYPE="ntext" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Voucher ref" ATTR_TYPE="ntext" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Vou src" ATTR_TYPE="ntext" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Cost center name" ATTR_TYPE="ntext" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Cost Center" ATTR_TYPE="ntext" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Project" ATTR_TYPE="ntext" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Field Name" ATTR_TYPE="ntext" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Name ID" ATTR_TYPE="ntext" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Name 1" ATTR_TYPE="ntext" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Acctg period" ATTR_TYPE="ntext" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Gen acct" ATTR_TYPE="ntext" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Gen Account Name" ATTR_TYPE="ntext" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="ACTIVITY.MM/YYYY" ATTR_TYPE="ntext" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Activity period" ATTR_TYPE="ntext" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Debit amt" ATTR_TYPE="ntext" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Credit amt" ATTR_TYPE="ntext" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Amount" ATTR_TYPE="ntext" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Oper" ATTR_TYPE="ntext" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Gross amount" ATTR_TYPE="ntext" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Qty" ATTR_TYPE="ntext" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="Qty2" ATTR_TYPE="ntext" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="fme_advanced_group" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="fme_configuration_common_group" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="fme_configuration_group" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="fme_feature_operation" PARM_VALUE="INSERT"/>
+#!     <DEFLINE_PARM PARM_NAME="fme_match_columns" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <DEFLINE_PARM PARM_NAME="fme_selection_group" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="fme_selection_method" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <DEFLINE_PARM PARM_NAME="fme_table_handling" PARM_VALUE="DROP_CREATE"/>
+#!     <DEFLINE_PARM PARM_NAME="fme_where_builder_clause" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <DEFLINE_PARM PARM_NAME="mssql_enable_identity_insert" PARM_VALUE="NO"/>
+#! </FEATURE_TYPE>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! <READER_DATASETS>
+#! <DATASET
+#!   NAME="CSV2_1"
+#!   OVERRIDE="-CSV2_1_DATASET"
+#!   DATASET="CSV2_1/2023_07_31  GL Data Detail.csv"
+#! />
+#! </READER_DATASETS>
+#! <CONNECTIONS>
+#! <CONNECTION
+#!   NAME="srv84.AccountingDataMart_TEST"
+#!   TYPE="DATABASE"
+#!   FAMILY="Microsoft SQL Server"
+#!   USAGE="PUBLISHED"
+#! />
+#! </CONNECTIONS>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI MULTIFILE SourceDataset_CSV2 CSV/Compressed_CSV/TEXT_Files(*.csv;*.gz;*.txt)|*.csv;*.gz;*.txt|CSV_Files(*.csv)|*.csv|Compressed_CSV_Files(*.gz)|*.gz|Text_Files(*.txt)|*.txt|Compressed_Files(*.bz2;*.gz)|*.bz2;*.gz|Archive_Files(*.7z;*.7zip;*.rar;*.rvz;*.tar;*.tar.bz2;*.tar.gz;*.tgz;*.zip;*.zipx)|*.7z;*.7zip;*.rar;*.rvz;*.tar;*.tar.bz2;*.tar.gz;*.tgz;*.zip;*.zipx|All_Files|* Source CSV (Comma Separated Value) File(s):"
+#!   DEFAULT_VALUE="C:\Users\drother\OneDrive - Laredo Energy\Documents\OSaenz\2023_07_31  GL Data Detail.csv"
+#!   IS_STAND_ALONE="false"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI NAMED_DB_CONNECTION_ENCODED DestDataset_MSSQL_ADO FMT:MSSQL_ADO%FAMILY:Microsoft&lt;space&gt;SQL&lt;space&gt;Server Connection:"
+#!   DEFAULT_VALUE="srv84.AccountingDataMart_TEST"
+#!   IS_STAND_ALONE="false"
+#! />
+#! </GLOBAL_PARAMETERS>
+#! <USER_PARAMETERS
+#!   FORM="eyJwYXJhbWV0ZXJzIjpbeyJhY2Nlc3NNb2RlIjoicmVhZCIsImRlZmF1bHRWYWx1ZSI6IkM6XFxVc2Vyc1xcZHJvdGhlclxcT25lRHJpdmUgLSBMYXJlZG8gRW5lcmd5XFxEb2N1bWVudHNcXE9TYWVuelxcMjAyM18wN18zMSAgR0wgRGF0YSBEZXRhaWwuY3N2IiwiZmlsdGVycyI6W3siZGVzY3JpcHRpb24iOiJDU1YvQ29tcHJlc3NlZCBDU1YvVEVYVCBGaWxlcyIsImZpbHRlciI6WyIqLmNzdiIsIiouZ3oiLCIqLnR4dCJdfSx7ImRlc2NyaXB0aW9uIjoiQ1NWIEZpbGVzIiwiZmlsdGVyIjpbIiouY3N2Il19LHsiZGVzY3JpcHRpb24iOiJDb21wcmVzc2VkIENTViBGaWxlcyIsImZpbHRlciI6WyIqLmd6Il19LHsiZGVzY3JpcHRpb24iOiJUZXh0IEZpbGVzIiwiZmlsdGVyIjpbIioudHh0Il19LHsiZGVzY3JpcHRpb24iOiJDb21wcmVzc2VkIEZpbGVzIiwiZmlsdGVyIjpbIiouYnoyIiwiKi5neiJdfSx7ImRlc2NyaXB0aW9uIjoiQXJjaGl2ZSBGaWxlcyIsImZpbHRlciI6WyIqLjd6IiwiKi43emlwIiwiKi5yYXIiLCIqLnJ2eiIsIioudGFyIiwiKi50YXIuYnoyIiwiKi50YXIuZ3oiLCIqLnRneiIsIiouemlwIiwiKi56aXB4Il19LHsiZGVzY3JpcHRpb24iOiJBbGwgRmlsZXMiLCJmaWx0ZXIiOlsiKiJdfV0sImluY2x1ZGVXZWJCcm93c2VyIjp0cnVlLCJpdGVtc1RvU2VsZWN0IjoiZmlsZXMiLCJuYW1lIjoiU291cmNlRGF0YXNldF9DU1YyIiwicHJvbXB0IjoiU291cmNlIENTViAoQ29tbWEgU2VwYXJhdGVkIFZhbHVlKSBGaWxlKHMpOiIsInJlcXVpcmVkIjp0cnVlLCJzZWxlY3RNdWx0aXBsZSI6dHJ1ZSwidHlwZSI6ImZpbGUiLCJ2YWxpZGF0ZUV4aXN0ZW5jZSI6ZmFsc2UsInZhbHVlVHlwZSI6InN0cmluZyJ9LHsiY2hvaWNlU2V0dGluZ3MiOnsiY2hvaWNlU2V0IjoiZGJDb25uZWN0aW9ucyIsImZvcm1hdCI6Ik1TU1FMX0FETyJ9LCJkZWZhdWx0VmFsdWUiOiJzcnY4NC5BY2NvdW50aW5nRGF0YU1hcnRfVEVTVCIsIm5hbWUiOiJEZXN0RGF0YXNldF9NU1NRTF9BRE8iLCJwcm9tcHQiOiJDb25uZWN0aW9uOiIsInJlcXVpcmVkIjp0cnVlLCJ0eXBlIjoiZHJvcGRvd24iLCJ2YWx1ZVR5cGUiOiJzdHJpbmdFbmNvZGVkIn1dfQ=="
+#! >
+#! <PARAMETER_INFO>
+#!     <INFO NAME="DestDataset_MSSQL_ADO" IS_STAND_ALONE="false" />
+#!     <INFO NAME="SourceDataset_CSV2" IS_STAND_ALONE="false" />
+#! </PARAMETER_INFO>
+#! </USER_PARAMETERS>
+#! <COMMENTS>
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="5"
+#!   TYPE="DateTimeConverter"
+#!   VERSION="3"
+#!   POSITION="-155.14253142531425 182.19167191671917"
+#!   BOUNDING_RECT="-155.14253142531425 182.19167191671917 454 71"
+#!   ORDER="500000000000003"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="21321"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="Trans no." IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Dist co" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Account" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Account Name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Description" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Voucher ref" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Vou src" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Cost center name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Cost Center" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Project" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Field Name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Name ID" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Name 1" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Acctg period" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Gen acct" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Gen Account Name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="ACTIVITY.MM/YYYY" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Activity period" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Debit amt" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Credit amt" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Amount" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Oper" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Gross amount" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Qty" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="Qty2" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="Trans no." IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="Dist co" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="Account" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="Account Name" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="Description" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="Voucher ref" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="Vou src" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="Cost center name" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="Cost Center" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="Project" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="Field Name" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="Name ID" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="Name 1" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="Acctg period" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="Gen acct" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="Gen Account Name" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="ACTIVITY.MM/YYYY" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="Activity period" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="Debit amt" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="Credit amt" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="Amount" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="Oper" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="Gross amount" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="Qty" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="Qty2" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="DATETIME_ATTR" PARM_VALUE="ACTIVITY.MM&lt;solidus&gt;YYYY Acctg&lt;space&gt;period Activity&lt;space&gt;period"/>
+#!     <XFORM_PARM PARM_NAME="IN_FORMAT" PARM_VALUE="%d&lt;solidus&gt;%m&lt;solidus&gt;%Y&lt;dollar&gt;"/>
+#!     <XFORM_PARM PARM_NAME="OUT_FORMAT" PARM_VALUE="%Y-%m-%d"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PASSTHROUGH" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="REFERENCE" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REFERENCE_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="REPAIR_INPUT" PARM_VALUE="YES"/>
+#!     <XFORM_PARM PARM_NAME="TEST_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_INPUT" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_INPUT_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_RESULT" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="DateTimeConverter"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="6"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="5"
+#!   SOURCE_PORT_DESC="-1"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="7"
+#!   SOURCE_NODE="5"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="-1"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0,0,0,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </WORKSPACE>
+
+FME_PYTHON_VERSION 38
+ARCGIS_COMPATIBILITY ARCGIS_AUTO
+GUI IGNORE SourceDataset_CSV2_1,CSV2_IN_FIELDS_GROUP_CSV2_1,CSV2_IN_DELIMITER_CSV2_1,CSV2_IN_FIELD_NAMES_LINE_CSV2_1,CSV2_IN_DATA_START_LINE_CSV2_1,CSV2_IN_ADVANCED_GROUP_CSV2_1,CSV2_IN_FIELD_SEPARATION_GROUP_CSV2_1,CSV2_IN_SKIP_DUPLICATE_DELIMITERS_CSV2_1,CSV2_IN_FIELD_QUALIFIER_CHARACTER_CSV2_1,CSV2_IN_FIELD_QUALIFIER_ESCAPE_CHARACTER_CSV2_1,CSV2_IN_FIELD_NAMES_GROUP_CSV2_1,CSV2_IN_CASE_SENSITIVE_FIELD_NAMES_CSV2_1,CSV2_IN_ENFORCE_STRICT_SCHEMA_CSV2_1,CSV2_IN_TRIM_FIELD_NAME_WHITESPACE_CSV2_1,CSV2_IN_FIELD_VALUES_GROUP_CSV2_1,CSV2_IN_READ_EMPTY_VALUES_AS_CSV2_1,CSV2_IN_TRIM_FIELD_VALUE_QUALIFIERS_CSV2_1,CSV2_IN_ENCODING_GROUP_CSV2_1,CSV2_IN_ENCODING_CSV2_1,CSV2_IN_PRESERVE_SOURCE_ENCODING_CSV2_1,CSV2_IN_SKIPPED_LINES_GROUP_CSV2_1,CSV2_IN_READ_SKIPPED_LINES_CSV2_1,CSV2_IN_NETWORK_AUTHENTICATION_CSV2_1,DestDataset_MSSQL_ADO_1,MSSQL_ADO_OUT_FME_CONNECTION_GROUP_MSSQL_ADO_1,MSSQL_ADO_OUT_COMMAND_TIMEOUT_MSSQL_ADO_1,MSSQL_ADO_OUT_ADVANCED_MSSQL_ADO_1,MSSQL_ADO_OUT_BULK_INSERT_MSSQL_ADO_1,MSSQL_ADO_OUT_START_TRANSACTION_MSSQL_ADO_1,MSSQL_ADO_OUT_TRANSACTION_INTERVAL_MSSQL_ADO_1,MSSQL_ADO_OUT_BEGIN_SQL{0}_MSSQL_ADO_1,MSSQL_ADO_OUT_END_SQL{0}_MSSQL_ADO_1
+# ============================================================================
+DEFAULT_MACRO SourceDataset_CSV2 C:\Users\drother\OneDrive - Laredo Energy\Documents\OSaenz\2023_07_31  GL Data Detail.csv
+DEFAULT_MACRO DestDataset_MSSQL_ADO srv84.AccountingDataMart_TEST
+# ============================================================================
+GUI MULTIFILE SourceDataset_CSV2 CSV/Compressed_CSV/TEXT_Files(*.csv;*.gz;*.txt)|*.csv;*.gz;*.txt|CSV_Files(*.csv)|*.csv|Compressed_CSV_Files(*.gz)|*.gz|Text_Files(*.txt)|*.txt|Compressed_Files(*.bz2;*.gz)|*.bz2;*.gz|Archive_Files(*.7z;*.7zip;*.rar;*.rvz;*.tar;*.tar.bz2;*.tar.gz;*.tgz;*.zip;*.zipx)|*.7z;*.7zip;*.rar;*.rvz;*.tar;*.tar.bz2;*.tar.gz;*.tgz;*.zip;*.zipx|All_Files|* Source CSV (Comma Separated Value) File(s):
+GUI NAMED_DB_CONNECTION_ENCODED DestDataset_MSSQL_ADO FMT:MSSQL_ADO%FAMILY:Microsoft<space>SQL<space>Server Connection:
+# ============================================================================
+USER_PARAMETERS eyJwYXJhbWV0ZXJzIjpbeyJhY2Nlc3NNb2RlIjoicmVhZCIsImRlZmF1bHRWYWx1ZSI6IkM6XFxVc2Vyc1xcZHJvdGhlclxcT25lRHJpdmUgLSBMYXJlZG8gRW5lcmd5XFxEb2N1bWVudHNcXE9TYWVuelxcMjAyM18wN18zMSAgR0wgRGF0YSBEZXRhaWwuY3N2IiwiZmlsdGVycyI6W3siZGVzY3JpcHRpb24iOiJDU1YvQ29tcHJlc3NlZCBDU1YvVEVYVCBGaWxlcyIsImZpbHRlciI6WyIqLmNzdiIsIiouZ3oiLCIqLnR4dCJdfSx7ImRlc2NyaXB0aW9uIjoiQ1NWIEZpbGVzIiwiZmlsdGVyIjpbIiouY3N2Il19LHsiZGVzY3JpcHRpb24iOiJDb21wcmVzc2VkIENTViBGaWxlcyIsImZpbHRlciI6WyIqLmd6Il19LHsiZGVzY3JpcHRpb24iOiJUZXh0IEZpbGVzIiwiZmlsdGVyIjpbIioudHh0Il19LHsiZGVzY3JpcHRpb24iOiJDb21wcmVzc2VkIEZpbGVzIiwiZmlsdGVyIjpbIiouYnoyIiwiKi5neiJdfSx7ImRlc2NyaXB0aW9uIjoiQXJjaGl2ZSBGaWxlcyIsImZpbHRlciI6WyIqLjd6IiwiKi43emlwIiwiKi5yYXIiLCIqLnJ2eiIsIioudGFyIiwiKi50YXIuYnoyIiwiKi50YXIuZ3oiLCIqLnRneiIsIiouemlwIiwiKi56aXB4Il19LHsiZGVzY3JpcHRpb24iOiJBbGwgRmlsZXMiLCJmaWx0ZXIiOlsiKiJdfV0sImluY2x1ZGVXZWJCcm93c2VyIjp0cnVlLCJpdGVtc1RvU2VsZWN0IjoiZmlsZXMiLCJuYW1lIjoiU291cmNlRGF0YXNldF9DU1YyIiwicHJvbXB0IjoiU291cmNlIENTViAoQ29tbWEgU2VwYXJhdGVkIFZhbHVlKSBGaWxlKHMpOiIsInJlcXVpcmVkIjp0cnVlLCJzZWxlY3RNdWx0aXBsZSI6dHJ1ZSwidHlwZSI6ImZpbGUiLCJ2YWxpZGF0ZUV4aXN0ZW5jZSI6ZmFsc2UsInZhbHVlVHlwZSI6InN0cmluZyJ9LHsiY2hvaWNlU2V0dGluZ3MiOnsiY2hvaWNlU2V0IjoiZGJDb25uZWN0aW9ucyIsImZvcm1hdCI6Ik1TU1FMX0FETyJ9LCJkZWZhdWx0VmFsdWUiOiJzcnY4NC5BY2NvdW50aW5nRGF0YU1hcnRfVEVTVCIsIm5hbWUiOiJEZXN0RGF0YXNldF9NU1NRTF9BRE8iLCJwcm9tcHQiOiJDb25uZWN0aW9uOiIsInJlcXVpcmVkIjp0cnVlLCJ0eXBlIjoiZHJvcGRvd24iLCJ2YWx1ZVR5cGUiOiJzdHJpbmdFbmNvZGVkIn1dfQ==
+# ============================================================================
+INCLUDE [ if {{$(SourceDataset_CSV2)} == {}} { puts_real {Parameter 'SourceDataset_CSV2' must be given a value.}; exit 1; }; ]
+INCLUDE [ if {{$(DestDataset_MSSQL_ADO)} == {}} { puts_real {Parameter 'DestDataset_MSSQL_ADO' must be given a value.}; exit 1; }; ]
+#! START_HEADER
+#! START_WB_HEADER
+READER_TYPE MULTI_READER
+MULTI_READER_TYPE{0} CSV2
+MULTI_READER_KEYWORD{0} CSV2_1
+MULTI_READER_GEN_DIRECTIVES{0} SKIPPED_LINES_GROUP,,FIELD_QUALIFIER_CHARACTER,<lt>quote<gt>,USE_CUSTOM_SCHEMA,NO,TRIM_FIELD_NAME_QUALIFIERS,Yes,SCAN_TYPES,Yes,DELIMITER,auto,_MERGE_SCHEMAS,YES,QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS,Yes,SCAN_MAX_ROWS,10000,TRIM_FEATURE_TYPE_NAME,Yes,FIELD_QUALIFIER_ESCAPE_CHARACTER,<lt>quote<gt>,READ_EMPTY_VALUES_AS,Null,SKIP_DUPLICATE_DELIMITERS,No,READ_SKIPPED_LINES,No,FIELD_SEPARATION_GROUP,,CASE_SENSITIVE_FIELD_NAMES,Yes,PREVIEW_PLACEHOLDER,,FIELD_VALUES_GROUP,,CSV2_EXPOSE_FORMAT_ATTRS,,ENCODING,windows-1252,ENFORCE_STRICT_SCHEMA,No,CHUNK_SIZE,100000,SCHEMA,,FEATURE_TYPE_NAME,FORMAT_NAME,FIELD_NAMES_GROUP,,DATASET_GROUP,,TRIM_FIELD_NAME_WHITESPACE,Yes,DATA_START_LINE,7,PRESERVE_SOURCE_ENCODING,No,FIELD_NAMES_LINE,6,ADVANCED_GROUP,,SCHEMA_GENERATION_GROUP,,FIELDS_GROUP,,REPLACE_ATTR_NAME_INVALID_CHARS,Yes,EXPOSE_ATTRS_GROUP,,SCAN_ADDITIONAL_FIELDS,No,ENCODING_GROUP,,TRIM_FIELD_VALUE_QUALIFIERS,Yes
+WRITER_TYPE MULTI_WRITER
+MULTI_WRITER_DATASET_ORDER BY_ID
+MULTI_WRITER_FIRST_WRITER_ID 0
+MULTI_WRITER_TYPE{0} MSSQL_ADO
+MULTI_WRITER_KEYWORD{0} MSSQL_ADO_1
+#! END_WB_HEADER
+#! START_WB_HEADER
+MACRO WB_KEYWORD "CSV2_1"
+#! END_WB_HEADER
+#! START_SOURCE_HEADER CSV2 CSV2_1
+# =====================================================================
+# The following GUI line prompts for a file to be used as the source CSV file.
+# The user input is stored in a macro, which is then used to define
+# the dataset to be read.
+# The dataset this mapping file was generated from was:
+#! END_SOURCE_HEADER
+#! START_WB_HEADER
+DEFAULT_MACRO SourceDataset
+INCLUDE [ if {{$(SourceDataset)} != ""} {                        \
+ puts {DEFAULT_MACRO SourceDataset_CSV2_1 $(SourceDataset)}     \
+ } ]
+#! END_WB_HEADER
+#! START_SOURCE_HEADER CSV2 CSV2_1
+DEFAULT_MACRO SourceDataset_CSV2_1 $(SourceDataset_CSV2)
+GUI MULTIFILE SourceDataset_CSV2_1 CSV/Compressed_CSV/TEXT_Files(*.csv;*.gz;*.txt)|*.csv;*.gz;*.txt|CSV_Files(*.csv)|*.csv|Compressed_CSV_Files(*.gz)|*.gz|Text_Files(*.txt)|*.txt|All_Files|* Source CSV (Comma Separated Value) File(s):
+DEFAULT_MACRO CSV2_IN_TRIM_FEATURE_TYPE_NAME_CSV2_1 Yes
+CSV2_1_TRIM_FEATURE_TYPE_NAME "$(CSV2_IN_TRIM_FEATURE_TYPE_NAME_CSV2_1)"
+DEFAULT_MACRO CSV2_IN_REPLACE_ATTR_NAME_INVALID_CHARS_CSV2_1 Yes
+CSV2_1_REPLACE_ATTR_NAME_INVALID_CHARS "$(CSV2_IN_REPLACE_ATTR_NAME_INVALID_CHARS_CSV2_1)"
+DEFAULT_MACRO CSV2_IN_FEATURE_TYPE_NAME_CSV2_1 FORMAT_NAME
+CSV2_1_FEATURE_TYPE_NAME "$(CSV2_IN_FEATURE_TYPE_NAME_CSV2_1)"
+DEFAULT_MACRO CSV2_IN_FIELDS_GROUP_CSV2_1 
+GUI OPTIONAL DISCLOSUREGROUP CSV2_IN_FIELDS_GROUP_CSV2_1 CSV2_IN_DELIMITER_CSV2_1%CSV2_IN_FIELD_NAMES_LINE_CSV2_1%CSV2_IN_DATA_START_LINE_CSV2_1 Fields
+DEFAULT_MACRO CSV2_IN_DELIMITER_CSV2_1 auto
+CSV2_1_DELIMITER "$(CSV2_IN_DELIMITER_CSV2_1)"
+GUI STRING_OR_CHOICE_ENCODED CSV2_IN_DELIMITER_CSV2_1 auto%,%;%|%space%tab Delimiter Character:
+DEFAULT_MACRO CSV2_IN_FIELD_NAMES_LINE_CSV2_1 6
+CSV2_1_FIELD_NAMES_LINE "$(CSV2_IN_FIELD_NAMES_LINE_CSV2_1)"
+GUI OPTIONAL INT_OR_CHOICE CSV2_IN_FIELD_NAMES_LINE_CSV2_1 None%1%2%3%4%5 Field Names Line:
+GUI LOOKUP CSV2_IN_FIELD_NAMES_LINE_CSV2_1 None, 
+DEFAULT_MACRO CSV2_IN_DATA_START_LINE_CSV2_1 7
+CSV2_1_DATA_START_LINE "$(CSV2_IN_DATA_START_LINE_CSV2_1)"
+GUI RANGE_SLIDER CSV2_IN_DATA_START_LINE_CSV2_1 1%MAX%0 Data Start Line:
+DEFAULT_MACRO CSV2_IN_ADVANCED_GROUP_CSV2_1 
+GUI OPTIONAL DISCLOSUREGROUP CSV2_IN_ADVANCED_GROUP_CSV2_1 FME_DISCLOSURE_CLOSED%CSV2_IN_FIELD_SEPARATION_GROUP_CSV2_1%CSV2_IN_FIELD_NAMES_GROUP_CSV2_1%CSV2_IN_FIELD_VALUES_GROUP_CSV2_1%CSV2_IN_ENCODING_GROUP_CSV2_1%CSV2_IN_SKIPPED_LINES_GROUP_CSV2_1%CSV2_IN_SCHEMA_GENERATION_GROUP Advanced
+DEFAULT_MACRO CSV2_IN_FIELD_SEPARATION_GROUP_CSV2_1 
+GUI OPTIONAL DISCLOSUREGROUP CSV2_IN_FIELD_SEPARATION_GROUP_CSV2_1 FME_DISCLOSURE_CLOSED%CSV2_IN_SKIP_DUPLICATE_DELIMITERS_CSV2_1%CSV2_IN_FIELD_QUALIFIER_CHARACTER_CSV2_1%CSV2_IN_FIELD_QUALIFIER_ESCAPE_CHARACTER_CSV2_1 Field Separation
+DEFAULT_MACRO CSV2_IN_SKIP_DUPLICATE_DELIMITERS_CSV2_1 No
+CSV2_1_SKIP_DUPLICATE_DELIMITERS "$(CSV2_IN_SKIP_DUPLICATE_DELIMITERS_CSV2_1)"
+GUI CHOICE CSV2_IN_SKIP_DUPLICATE_DELIMITERS_CSV2_1 Yes%No Skip Duplicate Delimiters:
+DEFAULT_MACRO CSV2_IN_FIELD_QUALIFIER_CHARACTER_CSV2_1 <quote>
+CSV2_1_FIELD_QUALIFIER_CHARACTER "$(CSV2_IN_FIELD_QUALIFIER_CHARACTER_CSV2_1)"
+GUI OPTIONAL STRING_ENCODED CSV2_IN_FIELD_QUALIFIER_CHARACTER_CSV2_1 Field Qualifier Character:
+DEFAULT_MACRO CSV2_IN_FIELD_QUALIFIER_ESCAPE_CHARACTER_CSV2_1 <quote>
+CSV2_1_FIELD_QUALIFIER_ESCAPE_CHARACTER "$(CSV2_IN_FIELD_QUALIFIER_ESCAPE_CHARACTER_CSV2_1)"
+GUI OPTIONAL STRING_ENCODED CSV2_IN_FIELD_QUALIFIER_ESCAPE_CHARACTER_CSV2_1 Field Qualifier Escape Character:
+DEFAULT_MACRO CSV2_IN_FIELD_NAMES_GROUP_CSV2_1 
+GUI OPTIONAL DISCLOSUREGROUP CSV2_IN_FIELD_NAMES_GROUP_CSV2_1 FME_DISCLOSURE_CLOSED%CSV2_IN_CASE_SENSITIVE_FIELD_NAMES_CSV2_1%CSV2_IN_ENFORCE_STRICT_SCHEMA_CSV2_1%CSV2_IN_TRIM_FIELD_NAME_WHITESPACE_CSV2_1 Field Names
+DEFAULT_MACRO CSV2_IN_TRIM_FIELD_NAME_QUALIFIERS_CSV2_1 Yes
+CSV2_1_TRIM_FIELD_NAME_QUALIFIERS "$(CSV2_IN_TRIM_FIELD_NAME_QUALIFIERS_CSV2_1)"
+DEFAULT_MACRO CSV2_IN_CASE_SENSITIVE_FIELD_NAMES_CSV2_1 Yes
+CSV2_1_CASE_SENSITIVE_FIELD_NAMES "$(CSV2_IN_CASE_SENSITIVE_FIELD_NAMES_CSV2_1)"
+GUI CHOICE CSV2_IN_CASE_SENSITIVE_FIELD_NAMES_CSV2_1 Yes%No Case Sensitive Field Names:
+DEFAULT_MACRO CSV2_IN_ENFORCE_STRICT_SCHEMA_CSV2_1 No
+CSV2_1_ENFORCE_STRICT_SCHEMA "$(CSV2_IN_ENFORCE_STRICT_SCHEMA_CSV2_1)"
+GUI CHOICE CSV2_IN_ENFORCE_STRICT_SCHEMA_CSV2_1 Yes%No Enforce Strict Schema:
+DEFAULT_MACRO CSV2_IN_TRIM_FIELD_NAME_WHITESPACE_CSV2_1 Yes
+CSV2_1_TRIM_FIELD_NAME_WHITESPACE "$(CSV2_IN_TRIM_FIELD_NAME_WHITESPACE_CSV2_1)"
+GUI CHOICE CSV2_IN_TRIM_FIELD_NAME_WHITESPACE_CSV2_1 Yes%No Trim Whitespaces From Field Names:
+DEFAULT_MACRO CSV2_IN_FIELD_VALUES_GROUP_CSV2_1 
+GUI OPTIONAL DISCLOSUREGROUP CSV2_IN_FIELD_VALUES_GROUP_CSV2_1 FME_DISCLOSURE_CLOSED%CSV2_IN_TRIM_FIELD_VALUE_QUALIFIERS_CSV2_1%CSV2_IN_READ_EMPTY_VALUES_AS_CSV2_1 Field Values
+DEFAULT_MACRO CSV2_IN_READ_EMPTY_VALUES_AS_CSV2_1 Null
+CSV2_1_READ_EMPTY_VALUES_AS "$(CSV2_IN_READ_EMPTY_VALUES_AS_CSV2_1)"
+GUI CHOICE CSV2_IN_READ_EMPTY_VALUES_AS_CSV2_1 Missing%Null Read Empty Values As:
+DEFAULT_MACRO CSV2_IN_TRIM_FIELD_VALUE_QUALIFIERS_CSV2_1 Yes
+CSV2_1_TRIM_FIELD_VALUE_QUALIFIERS "$(CSV2_IN_TRIM_FIELD_VALUE_QUALIFIERS_CSV2_1)"
+GUI CHOICE CSV2_IN_TRIM_FIELD_VALUE_QUALIFIERS_CSV2_1 Yes%No Trim Field Qualifier Characters:
+DEFAULT_MACRO CSV2_IN_ENCODING_GROUP_CSV2_1 
+GUI OPTIONAL DISCLOSUREGROUP CSV2_IN_ENCODING_GROUP_CSV2_1 FME_DISCLOSURE_CLOSED%CSV2_IN_ENCODING_CSV2_1%CSV2_IN_PRESERVE_SOURCE_ENCODING_CSV2_1 Encoding
+DEFAULT_MACRO CSV2_IN_ENCODING_CSV2_1 windows-1252
+CSV2_1_ENCODING "$(CSV2_IN_ENCODING_CSV2_1)"
+GUI STRING_OR_ENCODING CSV2_IN_ENCODING_CSV2_1 fme-system%* Character Encoding:
+DEFAULT_MACRO CSV2_IN_PRESERVE_SOURCE_ENCODING_CSV2_1 No
+CSV2_1_PRESERVE_SOURCE_ENCODING "$(CSV2_IN_PRESERVE_SOURCE_ENCODING_CSV2_1)"
+GUI CHOICE CSV2_IN_PRESERVE_SOURCE_ENCODING_CSV2_1 Yes%No Preserve Source Encoding:
+DEFAULT_MACRO CSV2_IN_SKIPPED_LINES_GROUP_CSV2_1 
+GUI OPTIONAL DISCLOSUREGROUP CSV2_IN_SKIPPED_LINES_GROUP_CSV2_1 FME_DISCLOSURE_CLOSED%CSV2_IN_READ_SKIPPED_LINES_CSV2_1 Skipped Lines
+DEFAULT_MACRO CSV2_IN_READ_SKIPPED_LINES_CSV2_1 No
+CSV2_1_READ_SKIPPED_LINES "$(CSV2_IN_READ_SKIPPED_LINES_CSV2_1)"
+GUI CHOICE CSV2_IN_READ_SKIPPED_LINES_CSV2_1 Yes%No Read Skipped Lines:
+DEFAULT_MACRO CSV2_IN_SCAN_MAX_ROWS_CSV2_1 10000
+CSV2_1_SCAN_MAX_ROWS "$(CSV2_IN_SCAN_MAX_ROWS_CSV2_1)"
+DEFAULT_MACRO CSV2_IN_SCAN_TYPES_CSV2_1 Yes
+CSV2_1_SCAN_TYPES "$(CSV2_IN_SCAN_TYPES_CSV2_1)"
+DEFAULT_MACRO CSV2_IN_SCAN_ADDITIONAL_FIELDS_CSV2_1 No
+CSV2_1_SCAN_ADDITIONAL_FIELDS "$(CSV2_IN_SCAN_ADDITIONAL_FIELDS_CSV2_1)"
+DEFAULT_MACRO CSV2_IN_EXPOSE_ATTRS_GROUP_CSV2_1
+CSV2_1_EXPOSE_ATTRS_GROUP "$(CSV2_IN_EXPOSE_ATTRS_GROUP_CSV2_1)"
+DEFAULT_MACRO CSV2_IN_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS_CSV2_1 Yes
+CSV2_1_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS "$(CSV2_IN_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS_CSV2_1)"
+DEFAULT_MACRO CSV2_IN_CHUNK_SIZE_CSV2_1 100000
+CSV2_1_CHUNK_SIZE "$(CSV2_IN_CHUNK_SIZE_CSV2_1)"
+# ===========================================================================
+DEFAULT_MACRO CSV2_IN_NETWORK_AUTHENTICATION_CSV2_1 
+CSV2_1_NETWORK_AUTHENTICATION "$(CSV2_IN_NETWORK_AUTHENTICATION_CSV2_1)"
+GUI OPTIONAL AUTHENTICATOR CSV2_IN_NETWORK_AUTHENTICATION_CSV2_1 CONTAINER%GROUP%CONTAINER_TITLE%"Network Authentication"%PROMPT_TYPE%NETWORK Network Authentication
+# ============================================================================
+DEFAULT_MACRO CSV2_IN_ATTRIBUTE_READING_CSV2_1 DEFLINE
+CSV2_1_ATTRIBUTE_READING "$(CSV2_IN_ATTRIBUTE_READING_CSV2_1)"
+# ============================================================================
+CSV2_1_GENERATE_FME_BUILD_NUM 21321
+CSV2_1_DATASET "$(SourceDataset_CSV2_1)"
+#! END_SOURCE_HEADER
+#! START_WB_HEADER
+MACRO WB_KEYWORD "MSSQL_ADO_1"
+#! END_WB_HEADER
+#! START_DEST_HEADER MSSQL_ADO MSSQL_ADO_1
+#! END_DEST_HEADER
+#! START_WB_HEADER
+DEFAULT_MACRO DestDataset
+INCLUDE [ if {"$(DestDataset)" != ""} {                          \
+ puts {DEFAULT_MACRO DestDataset_MSSQL_ADO_1 $(DestDataset)}         \
+ } ]
+#! END_WB_HEADER
+#! START_DEST_HEADER MSSQL_ADO MSSQL_ADO_1
+DEFAULT_MACRO DestDataset_MSSQL_ADO_1 $(DestDataset_MSSQL_ADO)
+GUI NAMED_DB_CONNECTION_ENCODED DestDataset_MSSQL_ADO_1 FMT:MSSQL_ADO Connection:
+DEFAULT_MACRO MSSQL_ADO_OUT_FME_CONNECTION_GROUP_MSSQL_ADO_1 
+GUI OPTIONAL DISCLOSUREGROUP MSSQL_ADO_OUT_FME_CONNECTION_GROUP_MSSQL_ADO_1 MSSQL_ADO_OUT_NAMED_CONNECTION%MSSQL_ADO_OUT_COMMAND_TIMEOUT_MSSQL_ADO_1 Database Connection
+# ============================================================================
+# Command time out. Indicates in seconds, how long to wait for a command
+# (sqlquery) to execute before terminating the attempt and generating an error.
+DEFAULT_MACRO MSSQL_ADO_OUT_COMMAND_TIMEOUT_MSSQL_ADO_1 30
+MSSQL_ADO_1_COMMAND_TIMEOUT "$(MSSQL_ADO_OUT_COMMAND_TIMEOUT_MSSQL_ADO_1)"
+GUI OPTIONAL INTEGER MSSQL_ADO_OUT_COMMAND_TIMEOUT_MSSQL_ADO_1 Command Timeout (Seconds)
+DEFAULT_MACRO MSSQL_ADO_OUT_ADVANCED_MSSQL_ADO_1 
+GUI OPTIONAL DISCLOSUREGROUP MSSQL_ADO_OUT_ADVANCED_MSSQL_ADO_1 MSSQL_ADO_OUT_BULK_INSERT_MSSQL_ADO_1%MSSQL_ADO_OUT_START_TRANSACTION_MSSQL_ADO_1%MSSQL_ADO_OUT_TRANSACTION_INTERVAL_MSSQL_ADO_1%MSSQL_ADO_OUT_BEGIN_SQL{0}_MSSQL_ADO_1%MSSQL_ADO_OUT_END_SQL{0}_MSSQL_ADO_1 Advanced
+# ============================================================================
+# This keyword determines whether we insert in bulk insert mode or not
+DEFAULT_MACRO MSSQL_ADO_OUT_BULK_INSERT_MSSQL_ADO_1 YES
+MSSQL_ADO_1_BULK_INSERT "$(MSSQL_ADO_OUT_BULK_INSERT_MSSQL_ADO_1)"
+GUI CHOICE MSSQL_ADO_OUT_BULK_INSERT_MSSQL_ADO_1 YES%NO Bulk Insert
+# ============================================================================
+# This keyword sets the starting transaction
+DEFAULT_MACRO MSSQL_ADO_OUT_START_TRANSACTION_MSSQL_ADO_1 0
+MSSQL_ADO_1_START_TRANSACTION "$(MSSQL_ADO_OUT_START_TRANSACTION_MSSQL_ADO_1)"
+GUI OPTIONAL TEXT MSSQL_ADO_OUT_START_TRANSACTION_MSSQL_ADO_1 Start Transaction At:
+# ============================================================================
+# This keyword sets the number of features between transaction commits
+DEFAULT_MACRO MSSQL_ADO_OUT_TRANSACTION_INTERVAL_MSSQL_ADO_1 500
+MSSQL_ADO_1_TRANSACTION_INTERVAL "$(MSSQL_ADO_OUT_TRANSACTION_INTERVAL_MSSQL_ADO_1)"
+GUI OPTIONAL TEXT MSSQL_ADO_OUT_TRANSACTION_INTERVAL_MSSQL_ADO_1 Features Per Transaction
+# ============================================================================
+# The following specifies an SQL command to execute before opening the first
+# table.
+DEFAULT_MACRO MSSQL_ADO_OUT_BEGIN_SQL{0}_MSSQL_ADO_1 
+MSSQL_ADO_1_BEGIN_SQL{0} "$(MSSQL_ADO_OUT_BEGIN_SQL{0}_MSSQL_ADO_1)"
+GUI OPTIONAL TEXT_EDIT_SQL_CFG MSSQL_ADO_OUT_BEGIN_SQL{0}_MSSQL_ADO_1 MODE,SQL;FORMAT,MSSQL_ADO SQL To Run Before Write
+# ============================================================================
+# The following specifies an SQL command to execute after closing all the
+# tables.
+DEFAULT_MACRO MSSQL_ADO_OUT_END_SQL{0}_MSSQL_ADO_1 
+MSSQL_ADO_1_END_SQL{0} "$(MSSQL_ADO_OUT_END_SQL{0}_MSSQL_ADO_1)"
+GUI OPTIONAL TEXT_EDIT_SQL_CFG MSSQL_ADO_OUT_END_SQL{0}_MSSQL_ADO_1 MODE,SQL;FORMAT,MSSQL_ADO SQL To Run After Write
+DEFAULT_MACRO MSSQL_ADO_OUT_COORDINATE_SYSTEM_GRANULARITY_MSSQL_ADO_1 FEATURE
+MSSQL_ADO_1_COORDINATE_SYSTEM_GRANULARITY "$(MSSQL_ADO_OUT_COORDINATE_SYSTEM_GRANULARITY_MSSQL_ADO_1)"
+# ============================================================================
+MSSQL_ADO_1_GENERATE_FME_BUILD_NUM 21321
+MSSQL_ADO_1_DATASET "$(DestDataset_MSSQL_ADO_1)"
+#! END_DEST_HEADER
+#! START_WB_HEADER
+#! END_WB_HEADER
+#! END_HEADER
+
+LOG_FILENAME "$(FME_MF_DIR)ImportGLDetail.log"
+LOG_APPEND NO
+LOG_FILTER_MASK -1
+LOG_MAX_FEATURES 200
+LOG_MAX_RECORDED_FEATURES 200
+FME_REPROJECTION_ENGINE FME
+FME_IMPLICIT_CSMAP_REPROJECTION_MODE Auto
+FME_GEOMETRY_HANDLING Enhanced
+FME_STROKE_MAX_DEVIATION 0
+FME_NAMES_ENCODING windows-1252
+DEFAULT_MACRO DATASET_KEYWORD_CSV2_1 CSV2_1
+DEFAULT_MACRO DATASET_KEYWORD_MSSQL_ADO_1 MSSQL_ADO_1
+# -------------------------------------------------------------------------
+
+CSV2_1_READER_META_ATTRIBUTES fme_feature_type
+
+# -------------------------------------------------------------------------
+
+CSV2_1_MAX_FEATURES 10000
+MULTI_READER_CONTINUE_ON_READER_FAILURE No
+
+# -------------------------------------------------------------------------
+
+MACRO WORKSPACE_NAME ImportGLDetail
+MACRO FME_VIEWER_APP fmedatainspector
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * RoutingFactory   FACTORY_NAME "Router and Unexpected Input Remover"   COMMAND_PARM_EVALUATION SINGLE_PASS   MULTI_READER_KEYWORD $(DATASET_KEYWORD_CSV2_1)   INPUT FEATURE_TYPE *    ROUTE CSV2 CSV2_1::CSV multi_reader_keyword,$(DATASET_KEYWORD_CSV2_1) TO FME_GENERIC ::CSV ALIAS_GEOMETRY    MERGE_INPUT Yes   OUTPUT ROUTED FEATURE_TYPE *
+CSV2_1_MERGE_DEF CSV2_1::CSV EXACT CSV DEFLINE fme_attribute_reading,defined,Trans<space>no.,uint32,Dist<space>co,uint8,Account,string,Account<space>Name,string,Description,string,Voucher<space>ref,string,Vou<space>src,string,Cost<space>center<space>name,string,Cost<space>Center,string,Project,string,Field<space>Name,string,Name<space>ID,uint16,Name<space>1,string,Acctg<space>period,string,Gen<space>acct,uint16,Gen<space>Account<space>Name,string,ACTIVITY.MM<solidus>YYYY,string,Activity<space>period,string,Debit<space>amt,string,Credit<space>amt,string,Amount,string,Oper,uint8,Gross<space>amount,real64,Qty,real64,Qty2,uint8
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * TeeFactory    FACTORY_NAME "CSV_CSV2_1 Splitter"    INPUT FEATURE_TYPE CSV    OUTPUT FEATURE_TYPE CSV_CSV2_1
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+# -------------------------------------------------------------------------
+DEFAULT_MACRO DateTimeConverter_EXPRESSION_LIST
+INCLUDE [    set repairInput {};    if {{YES} eq {YES}} {       set repairInput "<comma>repair";    };    set inFormat {FME|ISO};    if { {%d<solidus>%m<solidus>%Y<dollar>} ne {} } {       set inFormat {%d<solidus>%m<solidus>%Y<dollar>};       if { [string first "<quote>" $inFormat] != -1 } {          set inFormat [string map {"<quote>" "<backslash><quote>"} $inFormat];       };    };    set outFormat {%Y-%m-%d};    if { [string first "<quote>" $outFormat] != -1 } {       set outFormat [string map {"<quote>" "<backslash><quote>"} $outFormat];    };    set parmList {};    set attrs {ACTIVITY.MM<solidus>YYYY Acctg<space>period Activity<space>period};    foreach attr $attrs {       lappend parmList $attr;       set funcAttr $attr;       if { [string first "<quote>" $attr] != -1 }       {          set funcAttr [string map {"<quote>" "<backslash><quote>"} $attr];          append funcAttr "<quote>";          set funcAttr "<quote>$funcAttr";       };       lappend parmList <at>DateTimeFormat<openparen><at>DateTimeParse<openparen><at>Value<openparen>$funcAttr<closeparen><comma><quote>$inFormat<quote>$repairInput<closeparen><comma><quote>$outFormat<quote><closeparen>;    };    puts "MACRO DateTimeConverter_EXPRESSION_LIST [join $parmList { }]"; ]
+Tcl2 proc DateTimeConverter_778cac26_b4d7_4b61_ae59_34988dcbe3807_DateTimeConverter {} {    set attrs {ACTIVITY.MM<solidus>YYYY Acctg<space>period Activity<space>period};    set decodedAttrs {};    set attrVals {};    set attrNulls {};    set attrMissings {};    foreach attr $attrs {       set decodedAttr [FME_DecodeText $attr];       lappend decodedAttrs $decodedAttr;       lappend attrVals [FME_GetAttribute $decodedAttr];       lappend attrNulls [FME_IsAttributeNull $decodedAttr];       lappend attrExists [FME_AttributeExists $decodedAttr];    };    FME_Execute EvaluateExpression ATTR_CREATE_EXPR_PROPAGATE_MISSING_FDIV $(DateTimeConverter_EXPRESSION_LIST) DateTimeConverter;    foreach attr $decodedAttrs oldAttrVal $attrVals oldAttrExists $attrExists oldAttrNull $attrNulls {       set newAttrVal [FME_GetAttribute $attr];       if {[string length $newAttrVal] == 0} {          if {{NO} eq {NO} || [string length $oldAttrVal] > 0} {             FME_SetAttribute fme_rejection_code "INVALID_INPUT";             break;          } elseif {!$oldAttrExists} {             FME_UnsetAttributes $attr;          } elseif {!$oldAttrNull} {             FME_SetAttribute $attr {};          };       }    }; }
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { DateTimeConverter_1 }    INPUT  FEATURE_TYPE CSV_CSV2_1    OUTPUT { FEATURE_TYPE ___TOREJECTOR___       @RenameAttributes(FME_STRICT, ___fme_rejection_code___,fme_rejection_code)       @Tcl2(DateTimeConverter_778cac26_b4d7_4b61_ae59_34988dcbe3807_DateTimeConverter) }
+FACTORY_DEF {*} TestFactory    FACTORY_NAME { DateTimeConverter_Rejector }    INPUT FEATURE_TYPE ___TOREJECTOR___    TEST @Value(fme_rejection_code) != ""    FEATURE_TABLE_SHIM_SUPPORT Yes    PRESERVE_FEATURE_ORDER PER_OUTPUT_PORT    OUTPUT { PASSED FEATURE_TYPE DateTimeConverter_<REJECTED>       @RemoveAttributes(___fme_rejection_code___)        }    OUTPUT { FAILED FEATURE_TYPE DateTimeConverter_OUTPUT       @RenameAttributes(FME_STRICT, fme_rejection_code,___fme_rejection_code___)        }
+DEFAULT_MACRO _WB_BYPASS_TERMINATION No
+FACTORY_DEF * TeeFactory FACTORY_NAME DateTimeConverter_<Rejected> INPUT FEATURE_TYPE DateTimeConverter_<REJECTED>  OUTPUT FAILED FEATURE_TYPE * @Abort(ENCODED, DateTimeConverter<space>output<space>a<space><lt>Rejected<gt><space>feature.<space><space>To<space>continue<space>translation<space>when<space>features<space>are<space>rejected<comma><space>change<space><apos>Workspace<space>Parameters<apos><space><gt><space>Translation<space><gt><space><apos>Rejected<space>Feature<space>Handling<apos><space>to<space><apos>Continue<space>Translation<apos>)
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * RoutingFactory FACTORY_NAME "Destination Feature Type Routing Correlator"   COMMAND_PARM_EVALUATION SINGLE_PASS   INPUT FEATURE_TYPE *    ROUTE FME_GENERIC DateTimeConverter_OUTPUT TO MSSQL_ADO __GO_TO_FINAL_OUTPUT_ROUTER__ multi_writer_id,0,<at>SupplyAttributes<openparen>ENCODED<comma>__wb_out_feat_type__<comma>dbo.Stage_GLDetailCopy<closeparen> GEOMETRY   FEATURE_TYPE_ATTRIBUTE __wb_out_feat_type__   OUTPUT ROUTED FEATURE_TYPE *    OUTPUT NOT_ROUTED FEATURE_TYPE __nuke_me__ @Tcl2("FME_StatMessage 818059 [FME_GetAttribute fme_template_feature_type] 818060 818061 fme_warn")
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * TeeFactory   FACTORY_NAME "Final Output Nuker"   INPUT FEATURE_TYPE __nuke_me__
+
+# -------------------------------------------------------------------------
+MSSQL_ADO_1_DEF dbo.Stage_GLDetailCopy   mssql_update_key_columns     ""   mssql_drop_table             ""   mssql_truncate_table         ""   mssql_table_writer_mode      ""   fme_feature_operation        INSERT   fme_table_handling           DROP_CREATE   mssql_enable_identity_insert NO   "Trans no."                  ntext   "Dist co"                    ntext   Account                      ntext   "Account Name"               ntext   Description                  ntext   "Voucher ref"                ntext   "Vou src"                    ntext   "Cost center name"           ntext   "Cost Center"                ntext   Project                      ntext   "Field Name"                 ntext   "Name ID"                    ntext   "Name 1"                     ntext   "Acctg period"               ntext   "Gen acct"                   ntext   "Gen Account Name"           ntext   ACTIVITY.MM/YYYY             ntext   "Activity period"            ntext   "Debit amt"                  ntext   "Credit amt"                 ntext   Amount                       ntext   Oper                         ntext   "Gross amount"               ntext   Qty                          ntext   Qty2                         ntext
